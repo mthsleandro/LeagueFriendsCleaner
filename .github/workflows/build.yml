@@ -1,0 +1,30 @@
+
+name: Build LOLFriendsCleaner
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Instalar .NET 9
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Gerar executável
+        run: dotnet publish LOLFriendsCleaner.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
+
+      - name: Disponibilizar executável
+        uses: actions/upload-artifact@v4
+        with:
+          name: LOLFriendsCleaner-windows-x64
+          path: bin/Release/net9.0/win-x64/publish/
