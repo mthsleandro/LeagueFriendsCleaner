@@ -9,7 +9,7 @@
   <strong>Criado por Matheus Leandro</strong>
 </p>
 
-Baixe o aplicativo aqui: https://github.com/M-Minkov/LeagueFriendsCleaner/releases/tag/Release
+Baixe o aplicativo aqui: https://github.com/mthsleandro/LeagueFriendsCleaner/releases/tag/Release
 
 ## Recursos
 
