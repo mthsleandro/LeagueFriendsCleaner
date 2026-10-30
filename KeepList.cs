@@ -1,3 +1,5 @@
+using System.IO;
+
 namespace LOLFriendsCleaner;
 
 /// <summary>
@@ -27,7 +29,6 @@ internal sealed class KeepList
         }
         catch
         {
-            // arquivo ilegível: segue sem lista
         }
         return new KeepList(entries);
     }
