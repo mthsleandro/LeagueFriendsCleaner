@@ -35,7 +35,7 @@ Baixe o aplicativo aqui: https://github.com/M-Minkov/LeagueFriendsCleaner/releas
 O arquivo da versão anterior continua funcionando: se existir na mesma pasta do `.exe`, os amigos listados já começam **desmarcados** (serão mantidos). Ele não é mais criado automaticamente.
 
 | Formato    | Exemplo     | Efeito                                       |
-|------------|-------------|----------------------------------------------|
+| ---------- | ----------- | -------------------------------------------- |
 | `Nome#TAG` | `Faker#KR1` | Mantém exatamente esse jogador               |
 | `Nome`     | `Faker`     | Mantém o jogador com esse nome, qualquer tag |
 | `puuid`    | `a1b2c3...` | Mantém o jogador com esse identificador      |
@@ -60,7 +60,7 @@ O que apuramos sobre risco de banimento:
 - Em 2019 a Riot proibiu, "por ora", apps que usam a API do cliente para jogadores **na Coreia**. Não confirmamos se isso segue valendo; se você joga lá, não use.
 - Em outubro/2026 a Riot passou a bloquear o acesso de apps não autorizados à memória do jogo. Segundo a própria Riot, [isso não gera banimentos por si só](https://support.riotgames.com/ar-ae/riot/performance/game-memory-access-removed-for-third-party-apps), mas ferramentas não autorizadas podem deixar de funcionar.
 
-*League of Legends e Riot Games são marcas registradas da Riot Games, Inc. Este projeto não é endossado pela Riot Games e não reflete as opiniões da Riot Games nem de quem produz ou gerencia o League of Legends.*
+_League of Legends e Riot Games são marcas registradas da Riot Games, Inc. Este projeto não é endossado pela Riot Games e não reflete as opiniões da Riot Games nem de quem produz ou gerencia o League of Legends._
 
 ## Compilar
 

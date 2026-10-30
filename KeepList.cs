@@ -2,11 +2,6 @@ using System.IO;
 
 namespace LOLFriendsCleaner;
 
-/// <summary>
-/// Compatível com o antigo keep_friends.txt: amigos listados começam DESMARCADOS (serão mantidos).
-/// O arquivo é opcional e não é mais criado automaticamente.
-/// Formatos: Nome#TAG, Nome (qualquer tag) ou puuid. Linhas com # no início são comentários.
-/// </summary>
 internal sealed class KeepList
 {
     private readonly HashSet<string> _entries;

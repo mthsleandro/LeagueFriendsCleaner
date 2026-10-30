@@ -4,7 +4,6 @@ using System.Windows.Media;
 
 namespace LOLFriendsCleaner;
 
-/// <summary>Linha da lista: um amigo + se ele está marcado para exclusão.</summary>
 public sealed class FriendItem : INotifyPropertyChanged
 {
     private static readonly Brush Online = Frozen("#3DD68C");
@@ -53,7 +52,6 @@ public sealed class FriendItem : INotifyPropertyChanged
         _ => Offline,
     };
 
-    /// <summary>Ex.: "Offline · visto há 3 meses".</summary>
     public string StatusLine
     {
         get
@@ -78,7 +76,6 @@ public sealed class FriendItem : INotifyPropertyChanged
 
     private string LastSeenText()
     {
-        // Só faz sentido para quem não está online; ignora valores fora do formato esperado (epoch em ms).
         if (StatusText != "Offline") return "";
         if (!long.TryParse(Source.lastSeenOnlineTimestamp, NumberStyles.Integer, CultureInfo.InvariantCulture, out var ms)) return "";
         if (ms < 946_684_800_000L) return "";

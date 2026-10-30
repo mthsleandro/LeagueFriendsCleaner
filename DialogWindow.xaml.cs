@@ -10,11 +10,8 @@ public sealed class DialogOptions
 {
     public string Title { get; init; } = "";
     public string Message { get; init; } = "";
-    /// <summary>Caixa de destaque (ex.: aviso de ação irreversível).</summary>
     public string? Warning { get; init; }
-    /// <summary>Texto menor, em cinza, abaixo da mensagem.</summary>
     public string? Detail { get; init; }
-    /// <summary>Se informado, o botão principal só habilita depois de marcar esta caixa.</summary>
     public string? RequireCheckText { get; init; }
     public string PrimaryText { get; init; } = "OK";
     public string? SecondaryText { get; init; }
@@ -81,7 +78,6 @@ public partial class DialogWindow : Window
             ConfirmCheck.Click += (_, _) => PrimaryButton.IsEnabled = ConfirmCheck.IsChecked == true;
         }
 
-        // O foco inicial vai para a opção segura (cancelar) quando existir.
         Loaded += (_, _) => (options.SecondaryText is not null ? SecondaryButton : PrimaryButton).Focus();
     }
 
@@ -106,6 +102,6 @@ public partial class DialogWindow : Window
 
     private void Card_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
     {
-        try { DragMove(); } catch { /* ignorado: botão já foi solto */ }
+        try { DragMove(); } catch {  }
     }
 }
