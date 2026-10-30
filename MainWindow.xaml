@@ -20,7 +20,6 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- ============ Cabeçalho ============ -->
             <Grid Grid.Row="0" Margin="0,0,0,18">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -33,7 +32,7 @@
                 <StackPanel Grid.Column="1" Margin="14,0,0,0" VerticalAlignment="Center">
                     <TextBlock Text="LoL Friends Cleaner" FontSize="23" FontWeight="Bold"/>
                     <TextBlock Margin="0,3,0,0" FontSize="12.5" Foreground="{StaticResource TextDimBrush}">
-                        <Run Text="Limpe sua lista de amigos escolhendo quem sai e quem fica · por "/><Run Text="Matheus Leandro" FontWeight="SemiBold" Foreground="{StaticResource GoldBrush}"/>
+                        <Run Text="Limpe sua lista de amigos escolhendo quem sai e quem fica. "/>
                     </TextBlock>
                 </StackPanel>
 
@@ -50,7 +49,6 @@
                 </StackPanel>
             </Grid>
 
-            <!-- ============ Barra de pesquisa e ações em massa ============ -->
             <Grid Grid.Row="1" Margin="0,0,0,12">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -105,7 +103,6 @@
                         Style="{StaticResource GhostButton}" Click="Unmark_Click"/>
             </Grid>
 
-            <!-- ============ Lista ============ -->
             <Border Grid.Row="2" Background="{StaticResource SurfaceBrush}" CornerRadius="14"
                     BorderBrush="{StaticResource LineBrush}" BorderThickness="1">
                 <Grid>
@@ -194,7 +191,6 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
 
-                        <!-- Estados -->
                         <StackPanel x:Name="LoadingPanel" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock Text="Conectando ao cliente do League of Legends…" FontSize="15" FontWeight="SemiBold"
                                        HorizontalAlignment="Center">
@@ -236,7 +232,6 @@
                 </Grid>
             </Border>
 
-            <!-- ============ Rodapé de ação ============ -->
             <Grid Grid.Row="3" Margin="0,16,0,0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
@@ -275,7 +270,6 @@
             </Border>
         </Grid>
 
-        <!-- ============ Camadas (diálogos / progresso) ============ -->
         <Grid x:Name="DimLayer" Background="#B3000000" Visibility="Collapsed" Panel.ZIndex="10"/>
 
         <Grid x:Name="ProgressLayer" Background="#CC000000" Visibility="Collapsed" Panel.ZIndex="11">

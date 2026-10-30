@@ -7,7 +7,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
-    <!-- Identidade / autoria -->
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
     <Product>LoL Friends Cleaner</Product>
     <Authors>Matheus Leandro</Authors>
@@ -16,7 +15,6 @@
     <Description>Limpe sua lista de amigos do League of Legends escolhendo quem sai e quem fica. Criado por Matheus Leandro.</Description>
     <Version>1.0.0</Version>
 
-    <!-- Publicação em um único .exe (usado pelo GitHub Actions) -->
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
     <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
     <DebugType>none</DebugType>

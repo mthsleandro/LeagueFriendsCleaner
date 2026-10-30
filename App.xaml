@@ -5,7 +5,6 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <!-- ============ Paleta (dark) ============ -->
             <SolidColorBrush x:Key="BgBrush" Color="#0D0F14"/>
             <SolidColorBrush x:Key="SurfaceBrush" Color="#151922"/>
             <SolidColorBrush x:Key="Surface2Brush" Color="#1B2029"/>
@@ -123,7 +122,6 @@
                 </Setter>
             </Style>
 
-            <!-- ============ Campo de pesquisa ============ -->
             <Style x:Key="SearchBoxStyle" TargetType="TextBox">
                 <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
                 <Setter Property="CaretBrush" Value="{StaticResource TextBrush}"/>
@@ -151,8 +149,8 @@
                 </Setter>
             </Style>
 
-            <!-- ============ Checkbox em linha (lista de amigos) ============ -->
             <Style x:Key="RowCheck" TargetType="CheckBox">
+                <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
                 <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                 <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
@@ -198,7 +196,6 @@
                 </Setter>
             </Style>
 
-            <!-- Checkbox simples (caixas de diálogo) -->
             <Style x:Key="PlainCheck" TargetType="CheckBox">
                 <Setter Property="Cursor" Value="Hand"/>
                 <Setter Property="Foreground" Value="{StaticResource TextBrush}"/>
@@ -247,7 +244,6 @@
                 </Setter>
             </Style>
 
-            <!-- ============ Barra de rolagem fina ============ -->
             <Style x:Key="ScrollRepeat" TargetType="RepeatButton">
                 <Setter Property="Focusable" Value="False"/>
                 <Setter Property="IsTabStop" Value="False"/>
@@ -302,7 +298,6 @@
                 </Setter>
             </Style>
 
-            <!-- ============ Barra de progresso ============ -->
             <Style x:Key="SlimProgress" TargetType="ProgressBar">
                 <Setter Property="Height" Value="8"/>
                 <Setter Property="Template">

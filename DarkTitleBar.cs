@@ -4,7 +4,6 @@ using System.Windows.Interop;
 
 namespace LOLFriendsCleaner;
 
-/// <summary>Deixa a barra de título do Windows no tema escuro (Windows 10 2004+ / 11). Falha silenciosamente se não suportado.</summary>
 internal static class DarkTitleBar
 {
     [DllImport("dwmapi.dll")]
@@ -28,7 +27,6 @@ internal static class DarkTitleBar
         }
         catch
         {
-            // recurso apenas estético
         }
     }
 }

@@ -12,8 +12,6 @@ namespace LOLFriendsCleaner;
 
 public partial class MainWindow : Window
 {
-    // ---- Proteções contra limite de requisições do cliente ----
-    // (o ritmo original era 1s de pausa a cada 3 remoções; mantido e reforçado)
     private const int BatchSize = 3;                    // pausa longa a cada N remoções
     private const int BatchPauseMs = 1000;
     private const int MinStepDelayMs = 150;             // pausa curta e variável entre remoções
@@ -51,10 +49,6 @@ public partial class MainWindow : Window
     private void Window_SourceInitialized(object? sender, EventArgs e) => DarkTitleBar.Apply(this);
 
     private async void Window_Loaded(object sender, RoutedEventArgs e) => await LoadAsync();
-
-    // =====================================================================
-    //  Carregamento
-    // =====================================================================
 
     private async Task LoadAsync()
     {
@@ -97,10 +91,6 @@ public partial class MainWindow : Window
 
     private async void Reload_Click(object sender, RoutedEventArgs e) => await LoadAsync();
 
-    // =====================================================================
-    //  Pesquisa e marcação
-    // =====================================================================
-
     private bool FilterItem(object obj)
     {
         var query = SearchBox.Text.Trim();
@@ -129,7 +119,6 @@ public partial class MainWindow : Window
 
     private void Unmark_Click(object sender, RoutedEventArgs e) => SetVisible(false);
 
-    /// <summary>Marca/desmarca apenas os amigos visíveis (todos, ou só os resultados da pesquisa).</summary>
     private void SetVisible(bool toDelete)
     {
         var delta = 0;
@@ -152,10 +141,6 @@ public partial class MainWindow : Window
         _toDeleteCount += item.ToDelete ? 1 : -1;
         RefreshTexts();
     }
-
-    // =====================================================================
-    //  Exclusão
-    // =====================================================================
 
     private async void Delete_Click(object sender, RoutedEventArgs e)
     {
@@ -333,7 +318,6 @@ public partial class MainWindow : Window
     {
         if (_busy)
         {
-            // Não fecha no meio da exclusão: cancela com segurança e fecha ao terminar.
             e.Cancel = true;
             _closeRequested = true;
             CancelButton.IsEnabled = false;
@@ -342,10 +326,6 @@ public partial class MainWindow : Window
         }
         base.OnClosing(e);
     }
-
-    // =====================================================================
-    //  Riscos / sobre
-    // =====================================================================
 
     private void Risks_Click(object sender, RoutedEventArgs e)
     {
@@ -378,7 +358,6 @@ public partial class MainWindow : Window
         RefreshTexts();
     }
 
-    /// <summary>Atualiza contadores, textos e habilitação dos botões conforme o estado atual.</summary>
     private void RefreshTexts()
     {
         var ready = _state == UiState.Ready;
@@ -390,7 +369,6 @@ public partial class MainWindow : Window
         FriendsList.Visibility = ready && !noResults ? Visibility.Visible : Visibility.Collapsed;
         NoResultsPanel.Visibility = noResults ? Visibility.Visible : Visibility.Collapsed;
 
-        // Pílula de status
         switch (_state)
         {
             case UiState.Loading:
@@ -407,12 +385,10 @@ public partial class MainWindow : Window
                 break;
         }
 
-        // Cabeçalho da lista
         ShowingText.Text = !ready ? "" : searching ? $"Mostrando {visible} de {total}" : $"{total} {Plural(total, "amigo", "amigos")}";
         CounterText.Text = !ready ? "" : $"{_toDeleteCount} para excluir  ·  {total - _toDeleteCount} para manter";
         CounterText.Foreground = Res(_toDeleteCount > 0 ? "DangerBrush" : "SuccessBrush");
 
-        // Botões de marcação em massa
         MarkButton.Content = searching ? "Marcar resultados" : "Marcar todos";
         UnmarkButton.Content = searching ? "Desmarcar resultados" : "Desmarcar todos";
         var canEdit = ready && !_busy;
@@ -421,7 +397,6 @@ public partial class MainWindow : Window
         UnmarkButton.IsEnabled = canEdit && visible > 0;
         ReloadButton.IsEnabled = !_busy;
 
-        // Rodapé
         var keep = total - _toDeleteCount;
         if (!ready)
         {
@@ -446,11 +421,6 @@ public partial class MainWindow : Window
         DeleteButton.IsEnabled = canEdit && _toDeleteCount > 0;
     }
 
-    // =====================================================================
-    //  Utilidades
-    // =====================================================================
-
-    /// <summary>Mostra um diálogo modal escurecendo a janela principal.</summary>
     private bool ShowDialogBox(DialogOptions options)
     {
         DimLayer.Visibility = Visibility.Visible;
