@@ -1,0 +1,40 @@
+namespace LOLFriendsCleaner;
+
+/// <summary>
+/// Compatível com o antigo keep_friends.txt: amigos listados começam DESMARCADOS (serão mantidos).
+/// O arquivo é opcional e não é mais criado automaticamente.
+/// Formatos: Nome#TAG, Nome (qualquer tag) ou puuid. Linhas com # no início são comentários.
+/// </summary>
+internal sealed class KeepList
+{
+    private readonly HashSet<string> _entries;
+
+    private KeepList(HashSet<string> entries) => _entries = entries;
+
+    public static KeepList Load()
+    {
+        var entries = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        try
+        {
+            var path = Path.Combine(AppContext.BaseDirectory, "keep_friends.txt");
+            if (File.Exists(path))
+            {
+                foreach (var line in File.ReadAllLines(path).Select(l => l.Trim()))
+                {
+                    if (line.Length > 0 && !line.StartsWith('#')) entries.Add(line);
+                }
+            }
+        }
+        catch
+        {
+            // arquivo ilegível: segue sem lista
+        }
+        return new KeepList(entries);
+    }
+
+    public bool Matches(Friend f) =>
+        _entries.Count > 0 &&
+        (_entries.Contains($"{f.gameName}#{f.gameTag}") ||
+         (f.gameName is not null && _entries.Contains(f.gameName)) ||
+         (f.puuid is not null && _entries.Contains(f.puuid)));
+}
